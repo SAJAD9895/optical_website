@@ -4,12 +4,14 @@ import { ShoppingCart, Heart, Search, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CartDrawer from './CartDrawer';
 import SearchModal from './SearchModal';
+import { useFavorites } from '../context/FavoritesContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const { favorites } = useFavorites();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,7 +48,14 @@ const Navbar = () => {
         {/* Icons */}
         <div className="hidden md:flex items-center space-x-6">
           <button onClick={() => setSearchOpen(true)} className="hover:text-[var(--color-primary)] transition-colors"><Search size={20} /></button>
-          <button className="hover:text-[var(--color-primary)] transition-colors"><Heart size={20} /></button>
+          <Link to="/favorites" className="hover:text-[var(--color-primary)] transition-colors relative">
+            <Heart size={20} />
+            {favorites.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-[var(--color-primary)] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+                {favorites.length}
+              </span>
+            )}
+          </Link>
           <button onClick={() => setCartOpen(true)} className="hover:text-[var(--color-primary)] transition-colors relative">
             <ShoppingCart size={20} />
             <span className="absolute -top-2 -right-2 bg-[var(--color-primary)] text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">2</span>

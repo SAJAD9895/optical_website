@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useFavorites } from '../context/FavoritesContext';
+import { Heart } from 'lucide-react';
 
 const products = [
   {
@@ -33,6 +35,8 @@ const products = [
 ];
 
 const FeaturedProducts = () => {
+  const { toggleFavorite, isFavorite } = useFavorites();
+
   return (
     <section className="py-24 bg-[var(--color-surface)]">
       <div className="container mx-auto px-6 lg:px-12">
@@ -57,6 +61,19 @@ const FeaturedProducts = () => {
               className="group cursor-pointer"
             >
               <div className="relative aspect-square overflow-hidden bg-[var(--color-accent)]/20 rounded-sm mb-6 flex items-center justify-center p-8">
+                <div className="absolute top-4 right-4 z-20">
+                  <button 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggleFavorite(product);
+                    }}
+                    className={`p-2 rounded-full shadow-sm transition-all ${isFavorite(product.id) ? 'bg-[var(--color-primary)] text-white' : 'bg-white/80 hover:bg-white text-gray-400 hover:text-[var(--color-primary)]'}`}
+                    title={isFavorite(product.id) ? "Remove from favorites" : "Add to favorites"}
+                  >
+                    <Heart size={18} fill={isFavorite(product.id) ? "currentColor" : "none"} />
+                  </button>
+                </div>
                 <img 
                   src={product.image} 
                   alt={product.name} 

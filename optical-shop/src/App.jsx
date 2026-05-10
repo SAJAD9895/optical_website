@@ -8,12 +8,15 @@ import VirtualTryOn from './pages/VirtualTryOn';
 import BookTest from './pages/BookTest';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Favorites from './pages/Favorites';
 import Footer from './components/Footer';
+import { FavoritesProvider } from './context/FavoritesContext';
 
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col bg-[var(--color-background)]">
+    <FavoritesProvider>
+      <Router>
+        <div className="min-h-screen flex flex-col bg-[var(--color-background)]">
         <Navbar />
         <main className="flex-grow pt-20">
           <Routes>
@@ -24,11 +27,13 @@ function App() {
             <Route path="/book-test" element={<BookTest />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/favorites" element={<Favorites />} />
           </Routes>
         </main>
         <Footer />
       </div>
     </Router>
+    </FavoritesProvider>
   );
 }
 
