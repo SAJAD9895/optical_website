@@ -40,6 +40,7 @@ const Navbar = () => {
           <Link to="/virtual-try-on" className="hover:text-[var(--color-primary)] transition-colors">Try-On</Link>
           <Link to="/book-test" className="hover:text-[var(--color-primary)] transition-colors">Eye Test</Link>
           <Link to="/about" className="hover:text-[var(--color-primary)] transition-colors">About</Link>
+          <Link to="/contact" className="hover:text-[var(--color-primary)] transition-colors">Contact</Link>
         </div>
 
         {/* Icons */}
@@ -73,6 +74,7 @@ const Navbar = () => {
               <Link to="/virtual-try-on" className="text-lg">Try-On</Link>
               <Link to="/book-test" className="text-lg">Eye Test</Link>
               <Link to="/about" className="text-lg">About</Link>
+              <Link to="/contact" className="text-lg">Contact</Link>
             </div>
           </motion.div>
         )}

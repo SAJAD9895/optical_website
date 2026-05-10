@@ -7,6 +7,7 @@ import Premium from './pages/Premium';
 import VirtualTryOn from './pages/VirtualTryOn';
 import BookTest from './pages/BookTest';
 import About from './pages/About';
+import Contact from './pages/Contact';
 import Footer from './components/Footer';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/virtual-try-on" element={<VirtualTryOn />} />
             <Route path="/book-test" element={<BookTest />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
